@@ -15,13 +15,14 @@
 
     <link href="https://fonts.googleapis.com/css?family=Glamore&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Europe+Underground&display=swap" rel="stylesheet">
+
     <style>
     h2 {
     font-family: 'Europe Underground', sans-serif;
     }
-
     </style>
 
+    <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
 
@@ -31,8 +32,11 @@
     <!-- Imagem e texto -->
     <nav class="navbar navbar-light bg-light justify-content-center">
         <a class="navbar-brand" href="#">
-             <h2 style="font-family: Europe Underground">Task Manager <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M6 2c.306 0 .582.187.696.471L10 10.731l1.304-3.26A.751.751 0 0 1 12 7h3.25a.75.75 0 0 1 0 1.5h-2.742l-1.812 4.528a.751.751 0 0 1-1.392 0L6 4.77 4.696 8.03A.75.75 0 0 1 4 8.5H.75a.75.75 0 0 1 0-1.5h2.742l1.812-4.529A.751.751 0 0 1 6 2Z"></path></svg>
-             </h2>
+            <h2 style="font-family: Europe Underground">Task Manager
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                    <path d="M6 2c.306 0 .582.187.696.471L10 10.731l1.304-3.26A.751.751 0 0 1 12 7h3.25a.75.75 0 0 1 0 1.5h-2.742l-1.812 4.528a.751.751 0 0 1-1.392 0L6 4.77 4.696 8.03A.75.75 0 0 1 4 8.5H.75a.75.75 0 0 1 0-1.5h2.742l1.812-4.529A.751.751 0 0 1 6 2Z"></path>
+                </svg>
+            </h2>
         </a>
     </nav>
 
@@ -60,7 +64,9 @@
             <label for="finish"><h6 style="font-family: Tahoma">End:</h6></label>
             <input type="date" class="form-control" id="finish" name="End" required>
         </div>
-        <button type="submit" id="create-task-button" class="btn btn-primary">Create task</button>
+
+        <button type="submit" id="create-task-button" class="btn btn-primary " >Create task</button>
+
     </form>
 
     <script>
@@ -111,33 +117,6 @@
     });
   });
 
-    </script>
 
-    <table class="table mt-4">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Due Date</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Task 1</td>
-            <td>This is task 1</td>
-            <td>2023-03-10</td>
-            <td>
-                <a href="#" class="btn btn-sm btn-info">Edit</a>
-                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Task 2</td>
-            <td>This is task 2</td>
-            <td>2023
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    </script>
 </div>
