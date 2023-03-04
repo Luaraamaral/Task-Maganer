@@ -14,33 +14,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Glamore&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Europe+Underground&display=swap" rel="stylesheet">
     <style>
     h2 {
-      font-family: "Glamore", cursive;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Europe Underground', sans-serif;
     }
-  </style>
+
+    </style>
 
 </head>
 <body>
 
-<div class="container mt-4">
 
-    <h2 style="font-family: Glamore">Task Manager</h2>
+<div class="container-fluid">
+
+    <!-- Imagem e texto -->
+    <nav class="navbar navbar-light bg-light justify-content-center">
+        <a class="navbar-brand" href="#">
+             <h2 style="font-family: Europe Underground">Task Manager <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M6 2c.306 0 .582.187.696.471L10 10.731l1.304-3.26A.751.751 0 0 1 12 7h3.25a.75.75 0 0 1 0 1.5h-2.742l-1.812 4.528a.751.751 0 0 1-1.392 0L6 4.77 4.696 8.03A.75.75 0 0 1 4 8.5H.75a.75.75 0 0 1 0-1.5h2.742l1.812-4.529A.751.751 0 0 1 6 2Z"></path></svg>
+             </h2>
+        </a>
+    </nav>
 
 
     <form id="create-task-form">
         <div class="form-group">
-            <label for="title">Title:</label>
+            <br>
+            <label for="title"><h6 style="font-family: Tahoma">Activity title:</h6></label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
         <div class="form-group">
-            <label for="description">Description:</label>
+            <label for="description"><h6 style="font-family: Tahoma">Description:</h6></label>
             <textarea class="form-control" id="description" name="description"></textarea>
         </div>
         <div class="form-group">
-            <label for="dueDate">Due Date:</label>
-            <input type="date" class="form-control" id="dueDate" name="dueDate" required>
+            <label for="startDate"><h6 style="font-family: Tahoma">Start:</h6></label>
+            <input type="date" class="form-control" id="startDate" name="startDate" required>
+        </div>
+        <div class="form-group">
+            <label for="finish"><h6 style="font-family: Tahoma">End:</h6></label>
+            <input type="date" class="form-control" id="finish" name="End" required>
         </div>
         <button type="submit" id="create-task-button" class="btn btn-primary">Create task</button>
     </form>
@@ -54,13 +67,15 @@
       // Obtém os valores dos campos do formulário
       var taskTitle = $("#title").val();
       var taskDescription = $("#description").val();
-      var taskDueDate = $("#dueDate").val();
+      var taskstartDate = $("#startDate").val();
+      var taskFinish = $("#finish").val();
 
       // Cria um objeto Task com os valores dos campos
       var task = {
         title: taskTitle,
         description: taskDescription,
-        dueDate: taskDueDate
+        startDate: taskstartDate,
+        finish: taskFinish
       };
 
       // Envia a requisição para o endpoint "/createTask"
@@ -74,7 +89,8 @@
           // Limpa os campos do formulário
           $("#title").val("");
           $("#description").val("");
-          $("#dueDate").val("");
+          $("#startDate").val("");
+          $("#finish").val("");
 
           // Adiciona a nova tarefa na lista de tarefas exibida no HTML
           var newTaskElement = $("<li>").text(response.title);
@@ -86,7 +102,8 @@
       });
     });
   });
-</script>
+
+    </script>
 
     <table class="table mt-4">
         <thead>

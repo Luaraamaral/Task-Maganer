@@ -1,14 +1,12 @@
 package br.com.lacompany.taskmanager.domain;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tasks")
-@NoArgsConstructor
 @Data
 public class Task {
 
@@ -21,12 +19,17 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "dueDate")
-    private LocalDate dueDate;
+    @Column(name = "startDate")
+    private LocalDate startDate;
+
+    @Column(name = "finish")
+    private LocalDate finish;
+
+    public Task() {
+    }
 
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
     }
-
 }
