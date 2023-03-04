@@ -27,9 +27,8 @@
 <body>
 
 
-<div class="container-fluid">
+<div class="container-fluid " >
 
-    <!-- Imagem e texto -->
     <nav class="navbar navbar-light bg-light justify-content-center">
         <a class="navbar-brand" href="#">
             <h2 style="font-family: Europe Underground">Task Manager
@@ -39,16 +38,17 @@
             </h2>
         </a>
     </nav>
-
-
     <form id="create-task-form">
         <div class="form-group">
             <br>
+            <label for="collaborator"><h6 style="font-family: Tahoma">Collaborator:</h6></label>
+            <input type="text" class="form-control" id="collaborator" name="collaborator" required>
+        </div>
+        <div class="form-group">
             <label for="sector"><h6 style="font-family: Tahoma">Sector:</h6></label>
             <input type="text" class="form-control" id="sector" name="sector" required>
         </div>
         <div class="form-group">
-            <br>
             <label for="title"><h6 style="font-family: Tahoma">Activity title:</h6></label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
@@ -65,17 +65,18 @@
             <input type="date" class="form-control" id="finish" name="End" required>
         </div>
 
-        <button type="submit" id="create-task-button" class="btn btn-primary " >Create task</button>
+        <button type="submit" id="create-task-button" class="btn btn-primary" data-toggle="modal" data-target="#ExemploModalCentralizado">Create task</button>
 
     </form>
 
     <script>
-  $(document).ready(function() {
+    $(document).ready(function() {
     $("#create-task-form").submit(function(event) {
       // Impede que a página seja recarregada após o envio do formulário
       event.preventDefault();
 
       // Obtém os valores dos campos do formulário
+      var taskCollaborator = $("#collaborator").val();
       var taskSector = $("#sector").val();
       var taskTitle = $("#title").val();
       var taskDescription = $("#description").val();
@@ -84,6 +85,7 @@
 
       // Cria um objeto Task com os valores dos campos
       var task = {
+        collaborator: taskCollaborator,
         sector: taskSector,
         title: taskTitle,
         description: taskDescription,
@@ -105,6 +107,7 @@
           $("#description").val("");
           $("#startDate").val("");
           $("#finish").val("");
+          $("#collaborator").val("");
 
           // Adiciona a nova tarefa na lista de tarefas exibida no HTML
           var newTaskElement = $("<li>").text(response.title);
@@ -116,7 +119,7 @@
       });
     });
   });
-
-
     </script>
 </div>
+</body>
+</html>

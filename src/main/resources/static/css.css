@@ -16,3 +16,8 @@
      display: block; /* torna o botão um bloco */
      margin: 0 auto; /* define margens automáticas para centralizar */
     }
+
+.navbar {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
