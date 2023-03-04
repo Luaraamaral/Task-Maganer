@@ -14,6 +14,9 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "sector")
+    private String sector;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
@@ -28,7 +31,8 @@ public class Task {
     public Task() {
     }
 
-    public Task(String title, String description) {
+    public Task(String sector, String title, String description) {
+        this.sector = sector;
         this.title = title;
         this.description = description;
     }

@@ -40,6 +40,11 @@
     <form id="create-task-form">
         <div class="form-group">
             <br>
+            <label for="sector"><h6 style="font-family: Tahoma">Sector:</h6></label>
+            <input type="text" class="form-control" id="sector" name="sector" required>
+        </div>
+        <div class="form-group">
+            <br>
             <label for="title"><h6 style="font-family: Tahoma">Activity title:</h6></label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
@@ -65,6 +70,7 @@
       event.preventDefault();
 
       // Obtém os valores dos campos do formulário
+      var taskSector = $("#sector").val();
       var taskTitle = $("#title").val();
       var taskDescription = $("#description").val();
       var taskstartDate = $("#startDate").val();
@@ -72,6 +78,7 @@
 
       // Cria um objeto Task com os valores dos campos
       var task = {
+        sector: taskSector,
         title: taskTitle,
         description: taskDescription,
         startDate: taskstartDate,
@@ -87,6 +94,7 @@
         dataType: "json",
         success: function(response) {
           // Limpa os campos do formulário
+          $("#sector").val("");
           $("#title").val("");
           $("#description").val("");
           $("#startDate").val("");
