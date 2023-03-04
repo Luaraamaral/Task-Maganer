@@ -16,10 +16,12 @@
     <link href="https://fonts.googleapis.com/css?family=Glamore&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Europe+Underground&display=swap" rel="stylesheet">
 
+
     <style>
     h2 {
     font-family: 'Europe Underground', sans-serif;
     }
+
     </style>
 
     <link rel="stylesheet" type="text/css" href="css.css">
@@ -66,59 +68,54 @@
         </div>
         <button type="button" id="create-task-button" class="btn btn-primary">Create task</button>
 
-
     </form>
 
     <script>
-    $(document).ready(function() {
-    $("#create-task-form").submit(function(event) {
-      // Impede que a página seja recarregada após o envio do formulário
-      event.preventDefault();
+   $(document).ready(function() {
+  $("#create-task-button").click(function(event) {
+    event.preventDefault();
 
-      // Obtém os valores dos campos do formulário
-      var taskCollaborator = $("#collaborator").val();
-      var taskSector = $("#sector").val();
-      var taskTitle = $("#title").val();
-      var taskDescription = $("#description").val();
-      var taskstartDate = $("#startDate").val();
-      var taskFinish = $("#finish").val();
+    var taskCollaborator = $("#collaborator").val();
+    var taskSector = $("#sector").val();
+    var taskTitle = $("#title").val();
+    var taskDescription = $("#description").val();
+    var taskstartDate = $("#startDate").val();
+    var taskFinish = $("#finish").val();
 
-      // Cria um objeto Task com os valores dos campos
-      var task = {
-        collaborator: taskCollaborator,
-        sector: taskSector,
-        title: taskTitle,
-        description: taskDescription,
-        startDate: taskstartDate,
-        finish: taskFinish
-      };
+    var task = {
+      collaborator: taskCollaborator,
+      sector: taskSector,
+      title: taskTitle,
+      description: taskDescription,
+      startDate: taskstartDate,
+      finish: taskFinish
+    };
 
-      // Envia a requisição para o endpoint "/createTask"
-      $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: "/createTask",
-        data: JSON.stringify(task),
-        dataType: "json",
-        success: function(response) {
-          // Limpa os campos do formulário
-          $("#sector").val("");
-          $("#title").val("");
-          $("#description").val("");
-          $("#startDate").val("");
-          $("#finish").val("");
-          $("#collaborator").val("");
-
-          // Adiciona a nova tarefa na lista de tarefas exibida no HTML
-          var newTaskElement = $("<li>").text(response.title);
-          $("#task-list").append(newTaskElement);
-        },
-        error: function(error) {
-          console.log(error);
-        }
-      });
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "/createTask",
+      data: JSON.stringify(task),
+      dataType: 'json',
+      cache: false,
+      timeout: 600000,
+      success: function(data) {
+        console.log("SUCCESS : ", data);
+        $("#collaborator").val("");
+        $("#sector").val("");
+        $("#title").val("");
+        $("#description").val("");
+        $("#startDate").val("");
+        $("#finish").val("");
+      },
+      error: function(e) {
+        console.log("ERROR : ", e);
+      }
     });
   });
+});
+
+
     </script>
 </div>
 </body>
